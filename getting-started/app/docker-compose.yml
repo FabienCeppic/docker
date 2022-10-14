@@ -1,0 +1,16 @@
+version: "3.7"
+
+services:
+  app:
+    image: node:16-alpine
+    command: sh -c "yarn install && yarn run dev"
+    ports:
+     - 8000:8078
+    working-dir: /app
+    volumes:
+       - ./:/app
+    environment:
+       MYSQL_HOST: mariadb
+       MYSQL_USER: root
+       MYSQL_PASSWORD: secret
+       MYSQL_DB: todos
